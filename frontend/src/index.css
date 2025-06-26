@@ -1,3 +1,33 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+html {
+  transition: background-color 200ms ease-in-out, color 200ms ease-in-out;
+}
+
+body {
+  background-color: #111827;
+  color: #f9fafb;
+}
+
+.transition-theme {
+  transition: background-color 200ms ease-in-out, border-color 200ms ease-in-out, color 200ms ease-in-out;
+}
+
+.overflow-wrap-anywhere {
+  overflow-wrap: anywhere;
+}
+
+.break-anywhere {
+  word-break: break-all;
+  overflow-wrap: anywhere;
+}
+
+.content-text {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  hyphens: auto;
+  line-break: auto;
+}

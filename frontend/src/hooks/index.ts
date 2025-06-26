@@ -15,21 +15,35 @@ export const useBlogs = () =>{
     const [loading , setLoading] = useState(true) ;
     const [blogs , setBlogs] = useState<Blog[]>([]) ;
 
+    const fetchBlogs = async () => {
+        try {
+            setLoading(true);
+            const response = await axios.get(`${BACKEND_URL}/api/v1/blog/bulk`, {
+                headers : {
+                    Authorization : localStorage.getItem("token")
+                }
+            });
+            setBlogs(response.data.blogs);
+        } catch (error) {
+            console.error('Error fetching blogs:', error);
+        } finally {
+            setLoading(false);
+        }
+    };
+
     useEffect(()=>{
-        axios.get(`${BACKEND_URL}/api/v1/blog/bulk` , {
-            headers : {
-                Authorization : localStorage.getItem("token")
-            }
-        })
-            .then(res =>{ 
-                setBlogs(res.data.blogs) ;
-                setLoading(false) ;
-            })
+        fetchBlogs();
     } , [])
+
+    // Add a function to refresh blogs manually
+    const refreshBlogs = () => {
+        fetchBlogs();
+    };
 
     return {
         loading ,
-        blogs
+        blogs,
+        refreshBlogs
     }
 }
 

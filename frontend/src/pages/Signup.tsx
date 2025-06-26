@@ -3,7 +3,7 @@ import { Quote } from "../components/Quote"
 
 export const Signup = () => {
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2">
+    <div className="grid grid-cols-1 lg:grid-cols-2 min-h-screen bg-gray-900">
       <div>
         <Auth type="signup" />
       </div>

@@ -27,17 +27,17 @@ export const Auth = ({ type }: { type: "signup" | "signin" }) => {
     }
 
     return (
-        <div className="h-screen flex justify-center flex-col ">
+        <div className="h-screen flex justify-center flex-col bg-gray-900">
             <div className="flex justify-center">
                 <div className="px-10">
                     <div>
-                        <div className="text-3xl font-extrabold">
+                        <div className="text-3xl font-extrabold text-white">
                             Create an Account
                         </div>
 
-                        <div className="text-slate-500">
+                        <div className="text-gray-400">
                             {type==="signin"? "Don't have an account?" : "Already have an account?"}
-                            <Link className="pl-2 underline" to={type==="signin" ? "/signup" :"/signin"}>
+                            <Link className="pl-2 underline text-blue-400 hover:text-blue-300" to={type==="signin" ? "/signup" :"/signin"}>
                             {type==="signin"? "Sign up" : "Login"} 
                             </Link>
                         </div>
@@ -107,14 +107,14 @@ function LabelledInput({
 }: LabelledInputType) {
     return (
         <div>
-            <label className="block mb-2 text-sm font-medium text-black text-semibold pt-4">
+            <label className="block mb-2 text-sm font-semibold text-white pt-4">
                 {label}
             </label>
             <input
                 onChange={onChange}
                 type={type || "text"}
                 id="first_name"
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                className="bg-gray-800 border border-gray-600 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 placeholder-gray-400"
                 placeholder={placeholder}
                 required
             />

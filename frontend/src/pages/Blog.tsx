@@ -11,7 +11,7 @@ export const Blog = () => {
   }) ;
     if(loading || !blog){
       return (
-      <div>
+      <div className="min-h-screen bg-gray-900">
         <AppBar />
         <div className="h-screen flex flex-col justify-center items-center">
             <Spinner />
@@ -20,7 +20,7 @@ export const Blog = () => {
       )
     }
 
-    return <div>
+    return <div className="min-h-screen bg-gray-900">
       <FullBlog blog = {blog} />
     </div>
 }

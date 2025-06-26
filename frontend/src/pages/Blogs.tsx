@@ -2,12 +2,18 @@ import { AppBar } from "../components/AppBar"
 import { BlogCard } from "../components/BlogCard"
 import { BlogSkeleton } from "../components/BlogSkeleton";
 import { useBlogs } from "../hooks"
+import { useEffect } from "react";
 
 export const Blogs = () => {
-  const {loading , blogs} = useBlogs() ;
+  const {loading , blogs, refreshBlogs} = useBlogs() ;
+  
+  useEffect(() => {
+    refreshBlogs();
+  }, []);
+
   if(loading){
     return (
-      <div>
+      <div className="min-h-screen bg-gray-900">
         <AppBar />
         <div className="flex justify-center">
           <div>
@@ -22,13 +28,16 @@ export const Blogs = () => {
     )
   }
   return (
-    <div>
+    <div className="min-h-screen bg-gray-900">
       <AppBar />
       <div className="flex justify-center">
-        <div>
-
-          {blogs.map(blog =>(
+        <div className="space-y-4">
+          {blogs
+            .slice()
+            .reverse()
+            .map((blog, index) =>(
             <BlogCard 
+            key={`${blog.id}-${index}`}
             authorName ={blog.author.name || "Anonymous"}
             title={blog.title}
             content={blog.content}
